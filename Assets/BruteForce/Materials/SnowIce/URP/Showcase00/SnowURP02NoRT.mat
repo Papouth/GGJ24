@@ -291,7 +291,7 @@ Material:
     - _LightIntensity: 1
     - _LightOffset: 0.495
     - _LittleSpecForce: 2.19
-    - _MainTexMult: 1.5
+    - _MainTexMult: 1.54
     - _Metallic: 0
     - _Metallic0: 0
     - _Metallic1: 0
