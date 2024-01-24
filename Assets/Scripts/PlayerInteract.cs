@@ -1,12 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
     #region Variables
-
-    [Header("Interaction Parameters")] 
-    [SerializeField] private float distanceInteraction;
-    
     private InputManager inputManager;
     private MeshRenderer rend;
     #endregion
