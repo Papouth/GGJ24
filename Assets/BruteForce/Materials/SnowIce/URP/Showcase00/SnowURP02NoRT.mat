@@ -13,9 +13,10 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - IS_ICE
+  - IS_UNLIT
   - USE_AL
   - USE_LS
-  - USE_WC
+  - USE_WT
   - _TESSELLATION_EDGE
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -259,10 +260,10 @@ Material:
     - _Cutoff: 0.361
     - _DetailBumpScale: 3.07
     - _DetailNormalMapScale: 1
-    - _DisplacementColorMult: 1.09
-    - _DisplacementOffset: 0.3
-    - _DisplacementShadowMult: 0.76
-    - _DisplacementStrength: 0.35
+    - _DisplacementColorMult: 0.4
+    - _DisplacementOffset: 0.31
+    - _DisplacementShadowMult: 0.77
+    - _DisplacementStrength: 0.34
     - _DstBlend: 0
     - _EffectDisplacementStrength: 0.5
     - _Emission: 0.25
@@ -278,20 +279,20 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _HeightMultiplier: 0.5
-    - _HeightScale: 0.53
+    - _HeightScale: 0.46
     - _ISADD: 0
     - _ISICE: 1
     - _ISSNOW: 0
     - _IST: 0
-    - _ISUNLIT: 0
+    - _ISUNLIT: 1
     - _IceScale: 1.14
     - _IndentDepth: 0.21
     - _IndentStrength: 1.18
     - _LightHardness: 0.237
     - _LightIntensity: 1
     - _LightOffset: 0.495
-    - _LittleSpecForce: 2.19
-    - _MainTexMult: 1.5
+    - _LittleSpecForce: 2.33
+    - _MainTexMult: 1.51
     - _Metallic: 0
     - _Metallic0: 0
     - _Metallic1: 0
@@ -302,7 +303,7 @@ Material:
     - _Metallic6: 0
     - _Metallic7: 0
     - _Mode: 0
-    - _NormalMultiplier: 1.1
+    - _NormalMultiplier: 1.22
     - _NormalRTDepth: 0.18
     - _NormalRTStrength: 2.2
     - _NormalScale: 0.566
@@ -317,7 +318,7 @@ Material:
     - _NormalVector: 0
     - _OcclusionStrength: 1
     - _OffsetScale: 0.11
-    - _OverallScale: 0.94
+    - _OverallScale: 0.36
     - _ParalaxColorScale: -0.85
     - _Parallax: 0.02
     - _ParallaxStrength: 0
@@ -332,7 +333,7 @@ Material:
     - _ShininessSnow: 10.8
     - _Smoothness: 0.817
     - _SmoothnessTextureChannel: 0
-    - _SnowNormalScale: 1.56
+    - _SnowNormalScale: 1.62
     - _SnowScale: 1
     - _SpecForce: 3.01
     - _SpecGlossMap: 1
@@ -343,15 +344,15 @@ Material:
     - _TessellationEdgeLength: 61.8
     - _TessellationUniform: 1
     - _TransitionPower: 1.08
-    - _TransitionScale: 0.91
+    - _TransitionScale: 0.71
     - _TransparencyValue: 0.879
     - _USEDECAL: 0
     - _USEFOG: 0
     - _USEINTER: 0
     - _USELOW: 0
     - _USERT: 0
-    - _USEWC: 1
-    - _USEWT: 0
+    - _USEWC: 0
+    - _USEWT: 1
     - _UVSec: 0
     - _UpVector: 1
     - _UseAmbientLight: 1
@@ -369,7 +370,7 @@ Material:
     - _Emission: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FogDirection: {r: 1, g: 0.3, b: 2, a: 0}
-    - _IceTint: {r: 0, g: 0.0847132, b: 0.20754719, a: 0.7294118}
+    - _IceTint: {r: 0.017799927, g: 0.07306703, b: 0.1509434, a: 0.7294118}
     - _IceTrail: {r: 0.13399997, g: 0.13399997, b: 0.07412762, a: 1}
     - _MountColor: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
     - _ParalaxColor: {r: 0, g: 0.03668471, b: 0.7058824, a: 1}

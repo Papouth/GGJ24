@@ -1,0 +1,26 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Elevator : MonoBehaviour
+{
+    [SerializeField] private float modifiateGravity = -4f;
+    private Rigidbody rb;
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            rb = other.GetComponent<Rigidbody>();
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            rb.AddForce(Vector3.up * rb.mass * modifiateGravity);
+        }
+    }
+}
