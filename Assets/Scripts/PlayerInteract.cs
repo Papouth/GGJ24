@@ -7,6 +7,7 @@ public class PlayerInteract : MonoBehaviour
     #region Variables
     private InputManager inputManager;
     private MeshRenderer rend;
+    [SerializeField] private float distanceInteraction = 4;
     #endregion
 
 

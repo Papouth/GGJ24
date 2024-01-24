@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FishingPol
   - Fish
+  - Spawns
   layers:
   - Default
   - TransparentFX
