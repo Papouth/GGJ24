@@ -29,9 +29,8 @@ public class PlayerController : MonoBehaviour
     #region Customs Methods
     private void Movement()
     {
-        //transform.Translate(new Vector3(inputManager.movementInput.x, 0, inputManager.movementInput.y) * speed * Time.deltaTime);
-        rb.MovePosition(transform.position + new Vector3(inputManager.movementInput.x, 0, inputManager.movementInput.y) * speed * Time.deltaTime);
-        
+        //rb.MovePosition(transform.position + new Vector3(inputManager.movementInput.x, 0, inputManager.movementInput.y) * speed * Time.deltaTime);
+        rb.velocity = (rb.velocity + new Vector3(inputManager.movementInput.x, 0, inputManager.movementInput.y) * speed * Time.deltaTime);
     }
     #endregion
 }
