@@ -32,6 +32,21 @@ public class PlayerInteract : MonoBehaviour
         {
             inputManager.canInteract = false;
             rend.material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 1f, 1f);
+            
+            if (Physics.Raycast(transform.position, Vector3.forward, out var hit, distanceInteraction, 1<<6))
+            {
+                switch (hit.collider.gameObject.tag)
+                {
+                    case "FishingPol":
+                        Debug.Log("Je pêche.");
+                        GetComponent<PlayerManager>().AddFish();
+                        break;
+                    case "Fish":
+                        Debug.Log("Pîchon");
+                        GetComponent<PlayerManager>().AddFish();
+                        break;
+                }
+            }
         }
     }
     #endregion

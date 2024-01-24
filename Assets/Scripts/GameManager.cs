@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -7,10 +8,19 @@ public class GameManager : MonoBehaviour
     #region Variables.
 
     // Players container.
-    private List<GameObject> _playersContainer;
+    private List<GameObject> _playersContainer = new List<GameObject>();
 
+    // Components.
+    private UIManager _uiManager;
+    
     // Instance variable.
     private static GameManager _instance;
+
+    #endregion
+
+    #region Properties
+
+    public static GameManager Instance => _instance;
 
     #endregion
 
@@ -26,8 +36,8 @@ public class GameManager : MonoBehaviour
         if(_instance) Destroy(this);
         _instance = this;
     }
-
-
+    
+    
     /**
      * <summary>
      * Start is called before the first frame update.
@@ -35,7 +45,8 @@ public class GameManager : MonoBehaviour
      */
     void Start()
     {
-        
+        _uiManager = UIManager.Instance;
+        _uiManager.UpdateScoreboardUI(_playersContainer);
     }
 
     #endregion
@@ -53,17 +64,19 @@ public class GameManager : MonoBehaviour
         _playersContainer.Add(player);
     }
 
+    #endregion
+
+    #region Score Methods
 
     /**
      * <summary>
-     * Increment the player' fish counter.
+     * Update the players list order.
      * </summary>
-     * <param name="player">The actual Player.</param>
      */
-    public void AddFishToPlayer(GameObject player)
+    public void UpdateList()
     {
-        // TO-DO: Make the function.
-        //player.GetComponent<PlayerController>().AddFish();
+        _playersContainer = _playersContainer.OrderByDescending(o => o.GetComponent<PlayerManager>().Fish).ToList();
+        _uiManager.UpdateScoreboardUI(_playersContainer);
     }
 
     #endregion
