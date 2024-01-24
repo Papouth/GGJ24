@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,7 +9,6 @@ public class AIBehavior : MonoBehaviour
     #region Variables
 
     [Header("AI parameters")]
-    [SerializeField] private Bounds mapBounds;  // Manual way.
     [SerializeField] private float timeMin;
     [SerializeField] private float timeMax;
 
@@ -28,7 +28,7 @@ public class AIBehavior : MonoBehaviour
     void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();   // Navmesh Agent Component.
-        _mapMeshBounds = GameObject.Find("Plane").GetComponent<Renderer>().bounds;  // Map bounds.
+        _mapMeshBounds = GameObject.Find("Ground").GetComponent<NavMeshSurface>().navMeshData.sourceBounds;  // Map bounds.
         
         StartCoroutine(RandomPos(CalculatePosition()));
     }

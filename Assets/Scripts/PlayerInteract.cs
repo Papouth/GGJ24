@@ -41,11 +41,11 @@ public class PlayerInteract : MonoBehaviour
                 {
                     case "FishingPol":
                         Debug.Log("Je pêche.");
-                        // Do Things.
+                        GetComponent<PlayerManager>().AddFish();
                         break;
                     case "Fish":
                         Debug.Log("Pîchon");
-                        // Do Things.
+                        GetComponent<PlayerManager>().AddFish();
                         break;
                 }
             }
