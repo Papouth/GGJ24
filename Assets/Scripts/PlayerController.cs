@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     #region Variables
     private InputManager inputManager;
     public float speed = 5;
+
+    private Rigidbody rb;
     #endregion
 
 
@@ -14,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         inputManager = GetComponent<InputManager>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -26,7 +29,9 @@ public class PlayerController : MonoBehaviour
     #region Customs Methods
     private void Movement()
     {
-        transform.Translate(new Vector3(inputManager.movementInput.x, 0, inputManager.movementInput.y) * speed * Time.deltaTime);
+        //transform.Translate(new Vector3(inputManager.movementInput.x, 0, inputManager.movementInput.y) * speed * Time.deltaTime);
+        rb.MovePosition(transform.position + new Vector3(inputManager.movementInput.x, 0, inputManager.movementInput.y) * speed * Time.deltaTime);
+        
     }
     #endregion
 }

@@ -1,12 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
     #region Variables
-
-    [Header("Interaction Parameters")] 
-    [SerializeField] private float distanceInteraction;
-    
     private InputManager inputManager;
     private MeshRenderer rend;
     #endregion
@@ -34,21 +32,6 @@ public class PlayerInteract : MonoBehaviour
         {
             inputManager.canInteract = false;
             rend.material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 1f, 1f);
-            
-            if (Physics.Raycast(transform.position, Vector3.forward, out var hit, distanceInteraction, 1<<6))
-            {
-                switch (hit.collider.gameObject.tag)
-                {
-                    case "FishingPol":
-                        Debug.Log("Je pêche.");
-                        // Do Things.
-                        break;
-                    case "Fish":
-                        Debug.Log("Pîchon");
-                        // Do Things.
-                        break;
-                }
-            }
         }
     }
     #endregion
