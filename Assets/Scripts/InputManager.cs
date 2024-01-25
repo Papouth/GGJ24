@@ -9,6 +9,7 @@ public class InputManager : MonoBehaviour
     public Vector2 movementInput;
     public bool canInteract;
     public bool canDash;
+    public bool canAttack;
     #endregion
 
 
@@ -31,6 +32,12 @@ public class InputManager : MonoBehaviour
             canDash = true;
         }
         else canDash = false;
+    }
+
+    public void OnAttack(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed) canAttack = true;
+        else canAttack = false;
     }
     #endregion
 }
