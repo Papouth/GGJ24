@@ -29,6 +29,8 @@ public class Respawn : MonoBehaviour
 
         PM.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
+        PM.transform.rotation = Quaternion.identity;
+
         PM.transform.position = spawnPoints[randPoint].position;
     }
 }
