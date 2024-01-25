@@ -28,7 +28,7 @@ public class AIBehavior : MonoBehaviour
     void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();   // Navmesh Agent Component.
-        _mapMeshBounds = GameObject.Find("Ground").GetComponent<NavMeshSurface>().navMeshData.sourceBounds;  // Map bounds.
+        _mapMeshBounds = GameObject.Find("Banquise").GetComponent<NavMeshSurface>().navMeshData.sourceBounds;  // Map bounds.
         
         StartCoroutine(RandomPos(CalculatePosition()));
     }

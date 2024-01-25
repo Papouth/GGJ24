@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
 
     private RandomSpawn RS;
     private Animator animator;
+
+    private UIManager _uiManager;
+    private GameManager _gameManager;
     #endregion
 
 
@@ -38,6 +41,15 @@ public class PlayerController : MonoBehaviour
         RS = FindObjectOfType<RandomSpawn>();
 
         transform.position = RS.spawnPoints[RS.randInt].position;
+
+
+        _uiManager = UIManager.Instance;
+        _gameManager = FindObjectOfType<GameManager>();
+
+        // On rajoute notre player à notre liste du gameManager
+        _gameManager._playersContainer.Add(gameObject);
+
+        _uiManager.UpdateScoreboardUI(_gameManager._playersContainer);
     }
 
     private void Update()

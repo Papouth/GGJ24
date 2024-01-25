@@ -8,10 +8,10 @@ public class GameManager : MonoBehaviour
     #region Variables.
 
     // Players container.
-    private List<GameObject> _playersContainer = new List<GameObject>();
+    public List<GameObject> _playersContainer = new List<GameObject>();
 
     // Components.
-    private UIManager _uiManager;
+    public UIManager _uiManager;
     
     // Instance variable.
     private static GameManager _instance;
