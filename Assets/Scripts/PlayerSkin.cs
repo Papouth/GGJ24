@@ -9,7 +9,7 @@ public class PlayerSkin : MonoBehaviour
     private void Start()
     {
         // Random skins on spawn
-        //int num = Random.Range(0, skins.Length);
-        //transform.GetChild(num).gameObject.SetActive(true);
+        int num = Random.Range(0, skins.Length);
+        transform.GetChild(num).gameObject.SetActive(true);
     }
 }

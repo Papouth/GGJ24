@@ -6,6 +6,7 @@ public class PlayerInteract : MonoBehaviour
 {
     #region Variables
     private InputManager inputManager;
+    private MeshRenderer rend;
     [SerializeField] private float distanceInteraction = 4;
     #endregion
 
@@ -14,6 +15,7 @@ public class PlayerInteract : MonoBehaviour
     private void Awake()
     {
         inputManager = GetComponent<InputManager>();
+        rend = GetComponent<MeshRenderer>();
     }
 
     private void Update()
@@ -28,7 +30,10 @@ public class PlayerInteract : MonoBehaviour
     {
         // Random Color - Test Interaction
         if (inputManager.canInteract)
-        {         
+        {
+            inputManager.canInteract = false;
+            rend.material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 1f, 1f);
+            
             if (Physics.Raycast(transform.position, Vector3.forward, out var hit, distanceInteraction, 1<<6))
             {
                 switch (hit.collider.gameObject.tag)

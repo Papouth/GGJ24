@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     private bool resetDashBool;
 
     private RandomSpawn RS;
-    private Animator animator;
     #endregion
 
 
@@ -28,16 +27,11 @@ public class PlayerController : MonoBehaviour
     {
         inputManager = GetComponent<InputManager>();
         rb = GetComponent<Rigidbody>();
-        animator = GetComponentInChildren<Animator>();
     }
 
     private void Start()
     {
         saveTimer = timerDash;
-
-        RS = FindObjectOfType<RandomSpawn>();
-
-        transform.position = RS.spawnPoints[RS.randInt].position;
     }
 
     private void Update()
@@ -54,6 +48,15 @@ public class PlayerController : MonoBehaviour
 
 
     #region Customs Methods
+    public void SpawnPlayer()
+    {
+        RS = FindObjectOfType<RandomSpawn>();
+
+        int randPoint = Random.Range(0, RS.spawnPoints.Length);
+
+        transform.position = RS.spawnPoints[randPoint].position;
+    }
+
     private void ResetDash()
     {
         timerDash -= Time.deltaTime;
@@ -90,17 +93,8 @@ public class PlayerController : MonoBehaviour
             inputManager.canDash = false;
             resetDashBool = true;
 
-            animator.SetBool("Glisse", true);
-
             rb.AddForce(transform.forward * forceDash, ForceMode.Impulse);
-
-            Invoke("DashAnimReset", 1.2f);
         }
-    }
-
-    private void DashAnimReset()
-    {
-        animator.SetBool("Glisse", false);
     }
     #endregion
 }

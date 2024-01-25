@@ -13,8 +13,6 @@ public class Elevator : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             rb = other.GetComponent<Rigidbody>();
-            //rb.velocity = Vector3.zero;
-
         }
     }
 
