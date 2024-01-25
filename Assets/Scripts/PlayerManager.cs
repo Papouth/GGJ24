@@ -29,7 +29,7 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         _gameManager = GameManager.Instance;
-        _gameManager.AddPlayerToContainer(gameObject);
+        //_gameManager.AddPlayerToContainer(gameObject);
     }
 
     #endregion

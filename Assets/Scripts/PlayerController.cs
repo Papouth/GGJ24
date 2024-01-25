@@ -1,5 +1,8 @@
-
+using System.Collections;
+using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,6 +17,8 @@ public class PlayerController : MonoBehaviour
     private float timerDash = 5f;
     private float saveTimer;
     private bool resetDashBool;
+
+    private RandomSpawn RS;
     #endregion
 
 
@@ -43,6 +48,15 @@ public class PlayerController : MonoBehaviour
 
 
     #region Customs Methods
+    public void SpawnPlayer()
+    {
+        RS = FindObjectOfType<RandomSpawn>();
+
+        int randPoint = Random.Range(0, RS.spawnPoints.Length);
+
+        transform.position = RS.spawnPoints[randPoint].position;
+    }
+
     private void ResetDash()
     {
         timerDash -= Time.deltaTime;
