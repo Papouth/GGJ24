@@ -6,20 +6,29 @@ public class GameManager : MonoBehaviour
 {
     #region Variables.
 
-    [Header("Timer")] 
+    [Header("Timer")]
     [SerializeField] private float timerInSeconds;
-    
+
     // Timer variable.
     private float _actualTimer;
-    
+
     // Players container.
     public List<GameObject> _playersContainer = new List<GameObject>();
 
     // Components.
     public UIManager _uiManager;
-    
+
     // Instance variable.
     private static GameManager _instance;
+
+    [SerializeField] private GameObject camVictoire;
+    [SerializeField] private GameObject panelUI;
+    [SerializeField] private GameObject podiumPrefab;
+    [SerializeField] private GameObject AIPrefabManager;
+
+    [SerializeField] private List<Transform> rankList;
+    private bool havestop;
+    private int indexPlus;
 
     #endregion
 
@@ -38,11 +47,18 @@ public class GameManager : MonoBehaviour
      */
     void Awake()
     {
-        if(_instance) Destroy(this);
+        if (_instance) Destroy(this);
         _instance = this;
+
+        camVictoire.SetActive(false);
+        panelUI.SetActive(true);
+        podiumPrefab.SetActive(false);
+        AIPrefabManager.SetActive(true);
+
+        indexPlus = 0;
     }
-    
-    
+
+
     /**
      * <summary>
      * Start is called before the first frame update.
@@ -51,7 +67,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _uiManager = UIManager.Instance;
-        //_uiManager.UpdateScoreboardUI(_playersContainer);
     }
 
 
@@ -92,9 +107,26 @@ public class GameManager : MonoBehaviour
      */
     private void Timer()
     {
-        if(_actualTimer >= timerInSeconds)
+        if (_actualTimer >= timerInSeconds && !havestop)
         {
+            havestop = true;
             // TO-DO: Victory Condition.
+            camVictoire.SetActive(true);
+            panelUI.SetActive(false);
+
+            podiumPrefab.SetActive(true);
+            AIPrefabManager.SetActive(false);
+
+
+            for (int i = 0; i < _playersContainer.Count; i++)
+            {
+                if (indexPlus == 3) break;
+
+                _playersContainer[i].transform.position = rankList[2 - indexPlus].position;
+                _playersContainer[i].transform.rotation = rankList[2 - indexPlus].localRotation;
+
+                indexPlus++;
+            }
         }
         else
         {
