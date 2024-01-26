@@ -52,7 +52,9 @@ public class PlayerInteract : MonoBehaviour
                 case "Fish":
                     if (inputManager.canInteract)
                     {
+                        // On détruit le poisson
                         GetComponent<PlayerManager>().AddFish();
+                        Destroy(hit.collider.gameObject);
                         inputManager.canInteract = false;
                     }
                     break;
