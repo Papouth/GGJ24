@@ -7,7 +7,7 @@ public class PlayerInteract : MonoBehaviour
     #region Variables
 
     [Header("Interaction parameters")] 
-    [SerializeField] private float distanceInteraction;
+    [SerializeField] private float distanceInteraction = 4f;
     
     [Header("Fishing parameters")] 
     [SerializeField] private float fillAmountNeeded = 100f;

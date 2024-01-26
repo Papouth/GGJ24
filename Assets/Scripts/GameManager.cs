@@ -7,6 +7,12 @@ public class GameManager : MonoBehaviour
 
     #region Variables.
 
+    [Header("Timer")] 
+    [SerializeField] private float timerInSeconds;
+    
+    // Timer variable.
+    private float _actualTimer;
+    
     // Players container.
     public List<GameObject> _playersContainer = new List<GameObject>();
 
@@ -49,6 +55,17 @@ public class GameManager : MonoBehaviour
         _uiManager.UpdateScoreboardUI(_playersContainer);
     }
 
+
+    /**
+     * <summary>
+     * Update is called every frame, if the MonoBehaviour is enabled.
+     * </summary>
+     */
+    void Update()
+    {
+        Timer();
+    }
+
     #endregion
 
     #region Players Methods
@@ -77,6 +94,28 @@ public class GameManager : MonoBehaviour
     {
         _playersContainer = _playersContainer.OrderByDescending(o => o.GetComponent<PlayerManager>().Fish).ToList();
         _uiManager.UpdateScoreboardUI(_playersContainer);
+    }
+
+    #endregion
+
+    #region Timer Management
+
+    /**
+     * <summary>
+     * Timer manager.
+     * </summary>
+     */
+    private void Timer()
+    {
+        if(_actualTimer >= timerInSeconds)
+        {
+            // TO-DO: Victory Condition.
+        }
+        else
+        {
+            _actualTimer = Mathf.Clamp(_actualTimer + Time.deltaTime, 0f, timerInSeconds);
+            _uiManager.UpdateTimerUI(_actualTimer, timerInSeconds);
+        }
     }
 
     #endregion

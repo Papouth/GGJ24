@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -10,6 +11,12 @@ public class UIManager : MonoBehaviour
 
     [Header("ScoreBoard Parameters")] 
     [SerializeField] private List<TMP_Text> scoreboardList;
+
+    [Header("Timer Parameters")] 
+    [SerializeField] private Image imgTimer;
+    [SerializeField] private Color colorStart;
+    [SerializeField] private Color colorEnd;
+    
     [SerializeField] private List<Image> jaugeList;
     
     // Instance variable.
@@ -53,6 +60,36 @@ public class UIManager : MonoBehaviour
             scoreboardList[i].text = "Joueur " + i;
             players[i].GetComponent<PlayerInteract>().spamBarUi = jaugeList[i];
         }
+    }
+
+
+    /**
+     * <summary>
+     * Update the timer on the UI.
+     * </summary>
+     * <param name="timerActual">The actual timer.</param>
+     * <param name="timerMax">The max value.</param>
+     */
+    public void UpdateTimerUI(float timerActual, float timerMax)
+    {
+        imgTimer.fillAmount = timerActual / timerMax;
+        StartCoroutine(ChangeTimerColor(timerActual, timerMax));
+    }
+	
+	
+    /**
+     * <summary>
+     * Change the color of the timer.
+     * </summary>
+     * <param name="timerActual">The actual timer.</param>
+     * <param name="timerMax">The max value.</param>
+     */
+    private IEnumerator ChangeTimerColor(float timerActual, float timerMax)
+    {
+        Color timerColor = Color.Lerp(colorStart, colorEnd, timerActual / timerMax);
+        
+        imgTimer.color = Color.Lerp(imgTimer.color, timerColor, 1f);
+        yield return null;
     }
 
     #endregion
