@@ -42,6 +42,8 @@ public class PlayerManager : MonoBehaviour
     public void AddFish()
     {
         _fish = Mathf.Clamp(_fish + 1, 0, 10);    // Clamp between 0 and 10.
+
+        _gameManager._uiManager.UpdateClassement();
     }
 
 
@@ -55,6 +57,8 @@ public class PlayerManager : MonoBehaviour
     {
         if (_fish > 0)
         _fish = Mathf.Clamp(_fish - quantity, 0, 10);
+
+        _gameManager._uiManager.UpdateClassement();
     }
 
     #endregion

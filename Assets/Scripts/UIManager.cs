@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class UIManager : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class UIManager : MonoBehaviour
     [Header("ScoreBoard Parameters")]
     [SerializeField] private List<GameObject> backgroundList;
     [SerializeField] private List<GameObject> profilePicList;
+    [SerializeField] private List<TextMeshProUGUI> classementTextList;
+    [SerializeField] private List<GameObject> imageWinList;
+    private List<GameObject> saveJoueur = new List<GameObject>();
 
     [Header("Timer Parameters")]
     [SerializeField] private Image imgTimer;
@@ -23,6 +27,8 @@ public class UIManager : MonoBehaviour
 
     // Instance variable.
     private static UIManager _instance;
+    [SerializeField] private GameManager _gameManager;
+
 
     #endregion
 
@@ -47,6 +53,11 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < backgroundList.Count; i++)
         {
             backgroundList[i].SetActive(false);
+        }
+
+        for (int i = 0; i < imageWinList.Count; i++)
+        {
+            imageWinList[i].SetActive(false);
         }
     }
 
@@ -74,6 +85,8 @@ public class UIManager : MonoBehaviour
         // On attribue le player manager au fishUI correspondant
         backgroundList[indexPLayer].GetComponentInChildren<ShowFishUI>().playerManager = player.GetComponent<PlayerManager>();
 
+        saveJoueur.Add(player);
+
         indexPLayer++;
     }
 
@@ -90,6 +103,41 @@ public class UIManager : MonoBehaviour
         StartCoroutine(ChangeTimerColor(timerActual, timerMax));
     }
 
+    public void UpdateClassement()
+    {
+        for (int i = 0; i < _gameManager._playersContainer.Count; i++)
+        {
+            saveJoueur[i] = _gameManager._playersContainer[i];
+        }
+
+
+        // Le joueur qui a le plus de poissons se retrouve en haut de la liste
+        _gameManager._playersContainer = _gameManager._playersContainer.OrderByDescending(player => player.GetComponent<PlayerManager>().Fish).ToList();
+
+
+        for (int i = 0; i < _gameManager._playersContainer.Count; i++)
+        {
+            for (int j = 0; j < saveJoueur.Count; j++)
+            {
+                if (_gameManager._playersContainer[i] == saveJoueur[j])
+                {
+                    classementTextList[j].text = (i + 1).ToString();
+                }
+            }
+
+            imageWinList[i].SetActive(false);
+        }
+
+
+        // On affiche une courrone pour le meilleur
+        for (int i = 0; i < classementTextList.Count; i++)
+        {
+            if (classementTextList[i].text == "1")
+            {
+                imageWinList[i].SetActive(true);
+            }
+        }
+    }
 
     /**
      * <summary>
