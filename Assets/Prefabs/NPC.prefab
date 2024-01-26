@@ -415,6 +415,7 @@ MonoBehaviour:
   - {fileID: 168710697634530595}
   - {fileID: 2221940661581746025}
   num: 0
+  winnerCrown: {fileID: 0}
 --- !u!1 &4436628449123343746
 GameObject:
   m_ObjectHideFlags: 0
