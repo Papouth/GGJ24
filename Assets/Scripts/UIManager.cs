@@ -17,6 +17,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Color colorStart;
     [SerializeField] private Color colorEnd;
     
+    [SerializeField] private List<Image> jaugeList;
+    
     // Instance variable.
     private static UIManager _instance;
 
@@ -55,7 +57,8 @@ public class UIManager : MonoBehaviour
     {
         for(int i = 0; i < players.Count; i++)
         {
-            scoreboardList[i].text = players[i].name;
+            scoreboardList[i].text = "Joueur " + i;
+            players[i].GetComponent<PlayerInteract>().spamBarUi = jaugeList[i];
         }
     }
 

@@ -56,6 +56,7 @@ public class PlayerManager : MonoBehaviour
      */
     public void RemoveFish(int quantity)
     {
+        if (_fish > 0)
         _fish = Mathf.Clamp(_fish - quantity, 0, 10);
     }
 

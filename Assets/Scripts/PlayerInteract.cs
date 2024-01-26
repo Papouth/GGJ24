@@ -14,7 +14,7 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private float fillAmountAdd = 5f;
     [SerializeField] private float fillAmountRemove = 2.5f;
     [SerializeField] private float timeBetweenFishing = 5f;
-    [SerializeField] private Image spamBarUi;
+    public Image spamBarUi;
     
     // Fishing variables.
     private float _fillAmountActual;
@@ -23,7 +23,6 @@ public class PlayerInteract : MonoBehaviour
     private GameObject _selectedFishingRod;
     
     private InputManager inputManager;
-    private MeshRenderer rend;
     #endregion
 
 
@@ -31,7 +30,6 @@ public class PlayerInteract : MonoBehaviour
     private void Awake()
     {
         inputManager = GetComponent<InputManager>();
-        rend = GetComponent<MeshRenderer>();
     }
 
     private void Update()
@@ -68,8 +66,7 @@ public class PlayerInteract : MonoBehaviour
         // Random Color - Test Interaction
         if (inputManager.canInteract)
         {
-            inputManager.canInteract = false;
-            rend.material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 1f, 1f);
+            //spamBarUi.fillAmount += 0.4f;
         }
     }
 

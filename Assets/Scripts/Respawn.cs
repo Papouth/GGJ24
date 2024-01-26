@@ -6,6 +6,7 @@ public class Respawn : MonoBehaviour
 {
     public Transform[] spawnPoints;
     private PlayerManager PM;
+    private GameObject IAClone;
 
 
     private void OnTriggerEnter(Collider other)
@@ -21,6 +22,12 @@ public class Respawn : MonoBehaviour
 
             // On réinstantie sur un endroit random de la carte le poisson que le joueur viens de perdre
         }
+        else if (other.CompareTag("IA"))
+        {
+            Invoke("RespawnIA", 2f);
+
+            IAClone = other.gameObject;
+        }
     }
 
     private void RespawnPlayer()
@@ -29,6 +36,17 @@ public class Respawn : MonoBehaviour
 
         PM.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
+        PM.transform.rotation = Quaternion.identity;
+
         PM.transform.position = spawnPoints[randPoint].position;
+    }
+
+    private void RespawnIA()
+    {
+        int randPoint = Random.Range(0, spawnPoints.Length);
+
+        IAClone.transform.rotation = Quaternion.identity;
+
+        IAClone.transform.position = spawnPoints[randPoint].position;
     }
 }

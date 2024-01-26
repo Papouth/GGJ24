@@ -53,6 +53,24 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""9401cd95-d366-42bc-83f3-0fea8118951b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Taunt"",
+                    ""type"": ""Button"",
+                    ""id"": ""4c5d3b91-ccc1-49d1-bc38-5b30845acc85"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -125,7 +143,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""3be227c0-6ce3-48b0-961e-9e099cbca0d1"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -165,6 +183,50 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""90643127-d90e-45d6-bfc3-f67057a12701"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7a9ea3d6-77a4-4fb5-b411-ab84f2b6023d"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ab93de90-803c-4a15-956c-4b9d48074e62"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Taunt"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""93c32ed4-1e1d-4bc5-bbd8-037cf1aa0bfa"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Taunt"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -176,6 +238,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
         m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
         m_Gameplay_Dash = m_Gameplay.FindAction("Dash", throwIfNotFound: true);
+        m_Gameplay_Attack = m_Gameplay.FindAction("Attack", throwIfNotFound: true);
+        m_Gameplay_Taunt = m_Gameplay.FindAction("Taunt", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -240,6 +304,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Move;
     private readonly InputAction m_Gameplay_Interact;
     private readonly InputAction m_Gameplay_Dash;
+    private readonly InputAction m_Gameplay_Attack;
+    private readonly InputAction m_Gameplay_Taunt;
     public struct GameplayActions
     {
         private @Controls m_Wrapper;
@@ -247,6 +313,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
         public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
         public InputAction @Dash => m_Wrapper.m_Gameplay_Dash;
+        public InputAction @Attack => m_Wrapper.m_Gameplay_Attack;
+        public InputAction @Taunt => m_Wrapper.m_Gameplay_Taunt;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -265,6 +333,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
+            @Attack.started += instance.OnAttack;
+            @Attack.performed += instance.OnAttack;
+            @Attack.canceled += instance.OnAttack;
+            @Taunt.started += instance.OnTaunt;
+            @Taunt.performed += instance.OnTaunt;
+            @Taunt.canceled += instance.OnTaunt;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -278,6 +352,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
+            @Attack.started -= instance.OnAttack;
+            @Attack.performed -= instance.OnAttack;
+            @Attack.canceled -= instance.OnAttack;
+            @Taunt.started -= instance.OnTaunt;
+            @Taunt.performed -= instance.OnTaunt;
+            @Taunt.canceled -= instance.OnTaunt;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -300,5 +380,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnAttack(InputAction.CallbackContext context);
+        void OnTaunt(InputAction.CallbackContext context);
     }
 }

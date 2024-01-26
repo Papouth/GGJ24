@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class AIBehavior : MonoBehaviour
 {
-    
+
     #region Variables
 
     [Header("AI parameters")]
@@ -15,7 +15,9 @@ public class AIBehavior : MonoBehaviour
     // Map variables.
     private Bounds _mapMeshBounds;  // Automatic way.
     private NavMeshAgent _navMeshAgent;
-
+    private RandomSpawn RS;
+    [SerializeField] private float rotSpeed = 120f;
+    private Quaternion toRot;
     #endregion
 
     #region Built-In Methods
@@ -28,9 +30,18 @@ public class AIBehavior : MonoBehaviour
     void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();   // Navmesh Agent Component.
-        _mapMeshBounds = GameObject.Find("Ground").GetComponent<NavMeshSurface>().navMeshData.sourceBounds;  // Map bounds.
-        
+        _mapMeshBounds = GameObject.Find("Banquise").GetComponent<NavMeshSurface>().navMeshData.sourceBounds;  // Map bounds.
+
         StartCoroutine(RandomPos(CalculatePosition()));
+    }
+
+    private void Update()
+    {
+        var tr = transform.forward;
+        tr.Normalize();
+        toRot = Quaternion.LookRotation(tr, Vector3.up);
+
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, toRot, rotSpeed * Time.deltaTime);
     }
 
     #endregion
@@ -66,5 +77,5 @@ public class AIBehavior : MonoBehaviour
     }
 
     #endregion
-    
+
 }
