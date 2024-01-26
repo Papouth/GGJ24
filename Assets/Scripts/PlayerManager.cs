@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-
     #region Variables
 
     // Inventory.
@@ -29,7 +28,6 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         _gameManager = GameManager.Instance;
-        //_gameManager.AddPlayerToContainer(gameObject);
     }
 
     #endregion
@@ -61,5 +59,4 @@ public class PlayerManager : MonoBehaviour
     }
 
     #endregion
-
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
     #region Variables.
 
     [Header("Timer")] 
@@ -119,5 +118,4 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
-
 }
