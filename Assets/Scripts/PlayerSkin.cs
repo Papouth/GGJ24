@@ -9,14 +9,14 @@ public class PlayerSkin : MonoBehaviour
     [SerializeField] private GameObject winnerCrown;
 
 
-    private void Start()
+    private void Awake()
     {
         num = Random.Range(0, skins.Length);
-        if (winnerCrown != null) winnerCrown.SetActive(false);
-        // Random skins on spawn
-        skins[num].SetActive(true);
-    }
 
+        skins[num].SetActive(true);
+
+        if (winnerCrown != null) winnerCrown.SetActive(false);
+    }
 
     public void ShowCrown()
     {

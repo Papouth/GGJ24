@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _uiManager = UIManager.Instance;
-        _uiManager.UpdateScoreboardUI(_playersContainer);
+        //_uiManager.UpdateScoreboardUI(_playersContainer);
     }
 
 
@@ -82,20 +82,6 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    #region Score Methods
-
-    /**
-     * <summary>
-     * Update the players list order.
-     * </summary>
-     */
-    public void UpdateList()
-    {
-        _playersContainer = _playersContainer.OrderByDescending(o => o.GetComponent<PlayerManager>().Fish).ToList();
-        _uiManager.UpdateScoreboardUI(_playersContainer);
-    }
-
-    #endregion
 
     #region Timer Management
 

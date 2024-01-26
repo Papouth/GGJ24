@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
 
     private UIManager _uiManager;
     private GameManager _gameManager;
+    private PlayerSkin playerSkin;
     #endregion
 
 
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
         inputManager = GetComponent<InputManager>();
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
+        playerSkin = GetComponent<PlayerSkin>();
     }
 
     private void Start()
@@ -49,7 +51,7 @@ public class PlayerController : MonoBehaviour
         // On rajoute notre player à notre liste du gameManager
         _gameManager._playersContainer.Add(gameObject);
 
-        _uiManager.UpdateScoreboardUI(_gameManager._playersContainer);
+        _uiManager.UpdateScoreboardUI(gameObject, playerSkin.num);
     }
 
     private void Update()
