@@ -6,11 +6,10 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-
     #region Variables
 
     [Header("ScoreBoard Parameters")] 
-    [SerializeField] private List<TMP_Text> scoreboardList;
+    [SerializeField] private List<GameObject> backgroundList;
 
     [Header("Timer Parameters")] 
     [SerializeField] private Image imgTimer;
@@ -18,6 +17,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Color colorEnd;
     
     [SerializeField] private List<Image> jaugeList;
+    [SerializeField] private List<Sprite> skinsImgList;
     
     // Instance variable.
     private static UIManager _instance;
@@ -57,11 +57,21 @@ public class UIManager : MonoBehaviour
     {
         for(int i = 0; i < players.Count; i++)
         {
-            scoreboardList[i].text = "Joueur " + i;
+            var numSkin = players[i].GetComponent<PlayerSkin>().num;
+
+            backgroundList[i].SetActive(true);
+
+            // On met le bon skin sur le background du joueur
+            backgroundList[i].transform.GetChild(0).GetComponent<Image>().sprite = skinsImgList[numSkin];
+
+            // On attribue la jauge du joueur
             players[i].GetComponent<PlayerInteract>().spamBarUi = jaugeList[i];
+
+
+            // On attribue le player manager au fishUI correspondant
+            backgroundList[i].GetComponentInChildren<ShowFishUI>().playerManager = players[i].GetComponent<PlayerManager>();
         }
     }
-
 
     /**
      * <summary>
@@ -93,5 +103,4 @@ public class UIManager : MonoBehaviour
     }
 
     #endregion
-
 }

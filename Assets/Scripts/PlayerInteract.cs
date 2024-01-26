@@ -64,12 +64,6 @@ public class PlayerInteract : MonoBehaviour
         {
             ResetSpamBar();
         }
-        
-        // Random Color - Test Interaction
-        if (inputManager.canInteract)
-        {
-            //spamBarUi.fillAmount += 0.4f;
-        }
     }
 
     /**
