@@ -8,6 +8,7 @@ public class ShowFishUI : MonoBehaviour
     public PlayerManager playerManager;
     private int prevFish;
     private int actualFish;
+    private bool firstCall;
 
 
     private void Start()
@@ -17,19 +18,26 @@ public class ShowFishUI : MonoBehaviour
         {
             fishList[i].SetActive(false);
         }
-
-        prevFish = playerManager.Fish;
     }
 
     private void Update()
     {
-        actualFish = playerManager.Fish;
-
-        if (prevFish != actualFish)
+        if (playerManager != null)
         {
-            prevFish = actualFish;
-            UpdateFishUI(actualFish);
-        }
+            if (!firstCall)
+            {
+                firstCall = true;
+                prevFish = playerManager.Fish;
+            }
+
+            actualFish = playerManager.Fish;
+
+            if (prevFish != actualFish)
+            {
+                prevFish = actualFish;
+                UpdateFishUI(actualFish);
+            }
+        } 
     }
 
     public void UpdateFishUI(int fish)

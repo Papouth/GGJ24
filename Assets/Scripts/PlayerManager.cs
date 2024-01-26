@@ -42,7 +42,6 @@ public class PlayerManager : MonoBehaviour
     public void AddFish()
     {
         _fish = Mathf.Clamp(_fish + 1, 0, 10);    // Clamp between 0 and 10.
-        _gameManager.UpdateList();
     }
 
 

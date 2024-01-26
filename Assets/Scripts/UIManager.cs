@@ -8,17 +8,19 @@ public class UIManager : MonoBehaviour
 {
     #region Variables
 
-    [Header("ScoreBoard Parameters")] 
+    [Header("ScoreBoard Parameters")]
     [SerializeField] private List<GameObject> backgroundList;
+    [SerializeField] private List<GameObject> profilePicList;
 
-    [Header("Timer Parameters")] 
+    [Header("Timer Parameters")]
     [SerializeField] private Image imgTimer;
     [SerializeField] private Color colorStart;
     [SerializeField] private Color colorEnd;
-    
+
     [SerializeField] private List<Image> jaugeList;
     [SerializeField] private List<Sprite> skinsImgList;
-    
+    private int indexPLayer = 0;
+
     // Instance variable.
     private static UIManager _instance;
 
@@ -39,8 +41,13 @@ public class UIManager : MonoBehaviour
      */
     void Awake()
     {
-        if(_instance) Destroy(this);
+        if (_instance) Destroy(this);
         _instance = this;
+
+        for (int i = 0; i < backgroundList.Count; i++)
+        {
+            backgroundList[i].SetActive(false);
+        }
     }
 
     #endregion
@@ -53,24 +60,21 @@ public class UIManager : MonoBehaviour
      * </summary>
      * <param name="players">A list of the players.</param>
      */
-    public void UpdateScoreboardUI(List<GameObject> players)
+    public void UpdateScoreboardUI(GameObject player, int skinChiffre)
     {
-        for(int i = 0; i < players.Count; i++)
-        {
-            var numSkin = players[i].GetComponent<PlayerSkin>().num;
+        backgroundList[indexPLayer].SetActive(true);
 
-            backgroundList[i].SetActive(true);
+        // On met le bon skin sur le background du joueur
+        profilePicList[indexPLayer].GetComponent<Image>().sprite = skinsImgList[skinChiffre];
 
-            // On met le bon skin sur le background du joueur
-            backgroundList[i].transform.GetChild(0).GetComponent<Image>().sprite = skinsImgList[numSkin];
-
-            // On attribue la jauge du joueur
-            players[i].GetComponent<PlayerInteract>().spamBarUi = jaugeList[i];
+        // On attribue la jauge du joueur
+        player.GetComponent<PlayerInteract>().spamBarUi = jaugeList[indexPLayer];
 
 
-            // On attribue le player manager au fishUI correspondant
-            backgroundList[i].GetComponentInChildren<ShowFishUI>().playerManager = players[i].GetComponent<PlayerManager>();
-        }
+        // On attribue le player manager au fishUI correspondant
+        backgroundList[indexPLayer].GetComponentInChildren<ShowFishUI>().playerManager = player.GetComponent<PlayerManager>();
+
+        indexPLayer++;
     }
 
     /**
@@ -85,8 +89,8 @@ public class UIManager : MonoBehaviour
         imgTimer.fillAmount = timerActual / timerMax;
         StartCoroutine(ChangeTimerColor(timerActual, timerMax));
     }
-	
-	
+
+
     /**
      * <summary>
      * Change the color of the timer.
@@ -97,7 +101,7 @@ public class UIManager : MonoBehaviour
     private IEnumerator ChangeTimerColor(float timerActual, float timerMax)
     {
         Color timerColor = Color.Lerp(colorStart, colorEnd, timerActual / timerMax);
-        
+
         imgTimer.color = Color.Lerp(imgTimer.color, timerColor, 1f);
         yield return null;
     }
