@@ -8,20 +8,15 @@ public class AttackCollider : MonoBehaviour
     private Animator animator;
 
 
-    private void Start()
-    {
-        playerManager = GetComponentInParent<PlayerManager>();
-    }
-
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            playerManager = other.GetComponent<PlayerManager>();
             // On soustrait un poisson au joueur
             playerManager.RemoveFish(1);
 
-            animator = other.GetComponentInParent<Animator>();
+            animator = other.GetComponentInChildren<Animator>();
             animator.ResetTrigger("Rire");
             animator.SetTrigger("Rire");
         }

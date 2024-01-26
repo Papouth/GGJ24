@@ -10,6 +10,7 @@ public class InputManager : MonoBehaviour
     public bool canInteract;
     public bool canDash;
     public bool canAttack;
+    public bool canTaunt;
     #endregion
 
 
@@ -37,7 +38,12 @@ public class InputManager : MonoBehaviour
     public void OnAttack(InputAction.CallbackContext ctx)
     {
         if (ctx.performed) canAttack = true;
-        else canAttack = false;
+    }
+
+    public void OnTaunt(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed) canTaunt = true;
+        else canTaunt = false;
     }
     #endregion
 }
