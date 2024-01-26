@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 6519267944128204396}
   - component: {fileID: 1550291490468733945}
   - component: {fileID: 6603911353267551179}
-  - component: {fileID: 7222726354504217612}
-  m_Layer: 0
+  - component: {fileID: 6403259486916093216}
+  m_Layer: 6
   m_Name: poisson
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7222726354504217612
+--- !u!64 &6403259486916093216
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
