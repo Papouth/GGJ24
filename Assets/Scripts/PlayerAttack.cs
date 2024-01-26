@@ -33,11 +33,11 @@ public class PlayerAttack : MonoBehaviour
 
     private void Attack()
     {
-        if (inputManager.canAttack)
+        if (inputManager.canAttack && !haveAttack)
         {
             _animator.SetBool("Attack", true);
 
-            ShowWeapon();
+            Invoke("ShowWeapon", 0.15f);
             Invoke("HideWeapon", 1.12f);
             haveAttack = true;
         }
@@ -60,6 +60,7 @@ public class PlayerAttack : MonoBehaviour
         if (timerResetAttack <= 0)
         {
             inputManager.canAttack = false;
+            haveAttack = false;
             timerResetAttack = saveTimer;
         }
     }
