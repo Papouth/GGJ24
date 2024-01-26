@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6494523701126226961}
   - component: {fileID: 896325868197338280}
   - component: {fileID: 2245744412816106541}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PingouMasqueDePlonger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 2042341595523730088}
   - component: {fileID: 5328889191512463356}
   - component: {fileID: 8116947970019689481}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bras1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2949478737078551542}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rien
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 1014985579703959553}
   - component: {fileID: 3232330629707012846}
   - component: {fileID: 6986582672472875862}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bec
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 2532033165618976257}
   - component: {fileID: 8347876068001709193}
   - component: {fileID: 5525393405082601752}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Boby
   m_TagString: IA
   m_Icon: {fileID: 0}
@@ -414,6 +414,7 @@ MonoBehaviour:
   - {fileID: 4436628449123343746}
   - {fileID: 168710697634530595}
   - {fileID: 2221940661581746025}
+  num: 0
 --- !u!1 &4436628449123343746
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,7 +426,7 @@ GameObject:
   - component: {fileID: 4576970688743914869}
   - component: {fileID: 3180805018423241744}
   - component: {fileID: 2688785911096035771}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PingouChic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -508,7 +509,7 @@ GameObject:
   - component: {fileID: 2404538113505011309}
   - component: {fileID: 3018557777837758791}
   - component: {fileID: 6375715081434909140}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Patte2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -591,7 +592,7 @@ GameObject:
   - component: {fileID: 3702387800400103150}
   - component: {fileID: 1581578524211775259}
   - component: {fileID: 3306717145229552100}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PingouBonnet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -674,7 +675,7 @@ GameObject:
   - component: {fileID: 4993165168208832436}
   - component: {fileID: 4713577930929105638}
   - component: {fileID: 7029620529563528852}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bras2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -757,7 +758,7 @@ GameObject:
   - component: {fileID: 3322600493249168508}
   - component: {fileID: 5354489704469207431}
   - component: {fileID: 4365074042543156105}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Patte1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -838,7 +839,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7299755182535701882}
-  m_Layer: 0
+  - component: {fileID: 426665017919139518}
+  - component: {fileID: 1120579336425688050}
+  - component: {fileID: 4710655622949355014}
+  m_Layer: 7
   m_Name: ModelAI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -861,6 +865,138 @@ Transform:
   - {fileID: 9184962002262901585}
   m_Father: {fileID: 2518827319375897661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &426665017919139518
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6054805780635102338}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5658a8e9aee97cc499cea6c6bb2d84a7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1120579336425688050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6054805780635102338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdf4abaaf2a61484898b528eb0e64d69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rireListe: []
+  guiliSound: {fileID: 0}
+  nootNoot: {fileID: 8300000, guid: b1d5d5dbed3def14097145c6defc8f86, type: 3}
+--- !u!82 &4710655622949355014
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6054805780635102338}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &7117360917675208048
 GameObject:
   m_ObjectHideFlags: 0
@@ -872,7 +1008,7 @@ GameObject:
   - component: {fileID: 667967631786738270}
   - component: {fileID: 2209668998634252967}
   - component: {fileID: 4476448283969484569}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: "PingouCasquette\xE0lL'envers"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -956,7 +1092,7 @@ GameObject:
   - component: {fileID: 5220827319518862616}
   - component: {fileID: 6141846067034120442}
   - component: {fileID: 8831400987476627439}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NPC
   m_TagString: IA
   m_Icon: {fileID: 0}
@@ -1015,6 +1151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeMin: 5
   timeMax: 30
+  rotSpeed: 120
 --- !u!54 &8831400987476627439
 Rigidbody:
   m_ObjectHideFlags: 0

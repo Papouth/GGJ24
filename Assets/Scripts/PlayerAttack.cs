@@ -38,7 +38,7 @@ public class PlayerAttack : MonoBehaviour
             _animator.SetBool("Attack", true);
 
             Invoke("ShowWeapon", 0.15f);
-            Invoke("HideWeapon", 1.12f);
+            Invoke("HideWeapon", 0.3f);
             haveAttack = true;
         }
     }

@@ -593,6 +593,7 @@ MonoBehaviour:
   - {fileID: 5152883844319278015}
   - {fileID: 1247596490847606784}
   - {fileID: 1235992205770813931}
+  num: 0
 --- !u!114 &5231608181813616602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -609,7 +610,7 @@ MonoBehaviour:
   fillAmountNeeded: 100
   fillAmountAdd: 5
   fillAmountRemove: 0.25
-  timeBetweenFishing: 5
+  timeBetweenFishing: 10
   spamBarUi: {fileID: 0}
 --- !u!114 &952569271282824386
 MonoBehaviour:
