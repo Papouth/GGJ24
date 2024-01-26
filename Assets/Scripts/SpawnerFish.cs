@@ -10,6 +10,7 @@ public class SpawnerFish : MonoBehaviour
     [SerializeField] private float minimumTimer = 10f;
     [SerializeField] private float maximumTimer = 20f;
     [SerializeField] private GameObject fishPrefab;
+    private GameObject clone;
 
 
 
@@ -30,9 +31,9 @@ public class SpawnerFish : MonoBehaviour
         if (timerSpawnFish <= 0)
         {
             // On instantie un poisson à un endroit pas occupé, si tout les endroits sont pris, alors pas de spawn de poissons
-            if (spawnPoints[numPoint].childCount == 0)
+            if (spawnPoints[numPoint].transform.childCount == 0)
             {
-                Instantiate(fishPrefab, spawnPoints[numPoint].transform.position, fishPrefab.transform.rotation, spawnPoints[numPoint].transform);
+                clone = Instantiate(fishPrefab, spawnPoints[numPoint].transform.position, fishPrefab.transform.rotation, spawnPoints[numPoint].transform);
             }
 
             // Reset du timer
