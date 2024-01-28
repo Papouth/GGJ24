@@ -15,6 +15,7 @@ public class AttackCollider : MonoBehaviour
             playerManager = other.GetComponent<PlayerManager>();
             // On soustrait un poisson au joueur
             playerManager.RemoveFish(1);
+            Gain();
 
             animator = other.GetComponentInChildren<Animator>();
             animator.ResetTrigger("Rire");
@@ -30,5 +31,11 @@ public class AttackCollider : MonoBehaviour
             playerManager = GetComponentInParent<PlayerManager>();
             playerManager.RemoveFish(1);
         }
+    }
+
+    private void Gain()
+    {
+        playerManager = GetComponentInParent<PlayerManager>();
+        playerManager.AddFish();
     }
 }
