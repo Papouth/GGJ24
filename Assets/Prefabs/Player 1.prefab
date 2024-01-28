@@ -610,7 +610,7 @@ MonoBehaviour:
   distanceInteraction: 5
   fillAmountNeeded: 100
   fillAmountAdd: 5
-  fillAmountRemove: 0.25
+  fillAmountRemove: 0.18
   timeBetweenFishing: 10
   spamBarUi: {fileID: 0}
 --- !u!114 &952569271282824386

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,7 +29,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private List<Transform> rankList;
     private bool havestop;
-    private int indexPlus;
+    [SerializeField] private GameObject textRejouer;
+    [SerializeField] private GameObject textStartGame;
 
     #endregion
 
@@ -54,8 +56,8 @@ public class GameManager : MonoBehaviour
         panelUI.SetActive(true);
         podiumPrefab.SetActive(false);
         AIPrefabManager.SetActive(true);
-
-        indexPlus = 0;
+        textRejouer.SetActive(false);
+        textStartGame.SetActive(true);
     }
 
 
@@ -77,7 +79,9 @@ public class GameManager : MonoBehaviour
      */
     void Update()
     {
-        Timer();
+        if (_playersContainer.Count > 0) Timer();
+
+        TextStartHide();
     }
 
     #endregion
@@ -116,23 +120,70 @@ public class GameManager : MonoBehaviour
 
             podiumPrefab.SetActive(true);
             AIPrefabManager.SetActive(false);
+            _playersContainer[0].GetComponent<PlayerSkin>().ShowCrown();
 
 
             for (int i = 0; i < _playersContainer.Count; i++)
             {
-                if (indexPlus == 3) break;
+                _playersContainer[i].transform.position = rankList[3 - i].position;
+                _playersContainer[i].transform.rotation = rankList[3 - i].localRotation;
 
-                _playersContainer[i].transform.position = rankList[2 - indexPlus].position;
-                _playersContainer[i].transform.rotation = rankList[2 - indexPlus].localRotation;
+                _playersContainer[i].GetComponent<PlayerController>().enabled = false;
 
-                indexPlus++;
+                if (_playersContainer.Count == 2)
+                {
+                    if (i == 1)
+                    {
+                        _playersContainer[i].GetComponentInChildren<Animator>().SetTrigger("Lose");
+                    }
+                    else
+                    {
+                        _playersContainer[i].GetComponentInChildren<Animator>().SetTrigger("Win");
+                    }
+                }
+                else if (_playersContainer.Count == 3)
+                {
+                    if (i == 2)
+                    {
+                        _playersContainer[i].GetComponentInChildren<Animator>().SetTrigger("Lose");
+                    }
+                    else
+                    {
+                        _playersContainer[i].GetComponentInChildren<Animator>().SetTrigger("Win");
+                    }
+                }
+                else if (_playersContainer.Count == 4)
+                {
+                    if (i == 3)
+                    {
+                        _playersContainer[i].GetComponentInChildren<Animator>().SetTrigger("Lose");
+                    }
+                    else
+                    {
+                        _playersContainer[i].GetComponentInChildren<Animator>().SetTrigger("Win");
+                    }
+                }
             }
+
+            textRejouer.SetActive(true);
+            Invoke("AutoRestart", 12f);
         }
         else
         {
             _actualTimer = Mathf.Clamp(_actualTimer + Time.deltaTime, 0f, timerInSeconds);
             _uiManager.UpdateTimerUI(_actualTimer, timerInSeconds);
         }
+    }
+
+    private void AutoRestart()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
+
+    public void TextStartHide()
+    {
+        if (_playersContainer.Count > 0)
+        textStartGame.SetActive(false);
     }
 
     #endregion
